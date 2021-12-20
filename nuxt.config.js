@@ -61,6 +61,7 @@ export default {
   axios: {
     baseURL: process.env.baseURL || "http://localhost:3000"
   },
+  
   loading: false,
 
   transition: {
