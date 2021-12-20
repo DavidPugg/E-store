@@ -1,5 +1,6 @@
 const { loadNuxt, build } = require("nuxt");
 
+require("dotenv").config();
 const dbUrl = process.env.DB_URL || "mongodb://localhost:27017/e-store";
 const secret = process.env.SECRET || "verybadsecret";
 
@@ -11,7 +12,6 @@ const isDev = process.env.NODE_ENV !== "production";
 const port = process.env.PORT || 3000;
 
 //npm
-require("dotenv").config();
 const session = require("express-session");
 
 const mongoose = require("mongoose");
