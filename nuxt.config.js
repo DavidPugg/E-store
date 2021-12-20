@@ -59,7 +59,7 @@ export default {
   build: {},
 
   axios: {
-    baseURL: "http://localhost:3000/"
+    baseURL: "https://git.heroku.com/nuxtestore.git"
   },
   loading: false,
 
