@@ -1,5 +1,10 @@
 const { loadNuxt, build } = require("nuxt");
 
+const dbUrl = process.env.DB_URL || "mongodb://localhost:27017/e-store";
+const secret = process.env.SECRET || "verybadsecret";
+
+const git = "https://git.heroku.com/nuxtestore.git";
+
 const express = require("express");
 const app = express();
 const isDev = process.env.NODE_ENV !== "production";
@@ -8,30 +13,42 @@ const port = process.env.PORT || 3000;
 //npm
 require("dotenv").config();
 const session = require("express-session");
+
+const mongoose = require("mongoose");
 const MongoStore = require("connect-mongo");
 
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
 
 //my stuff
-require("./mongooseConnect")();
 const User = require("./models/userModel");
 const userRoutes = require("./routes/userRoutes");
 const productRoutes = require("./routes/productRoutes");
 const reviewRoutes = require("./routes/reviewRoutes");
 const orderRoutes = require("./routes/orderRoutes");
 
+mongoose.connect(dbUrl, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+});
+
+const db = mongoose.connection;
+db.on("error", console.error.bind(console, "connection error:"));
+db.once("open", function() {
+  console.log("Database connected!");
+});
+
 const store = MongoStore.create({
-  mongoUrl: process.env.DB_URL,
-  secret: process.env.SECRET,
+  mongoUrl: dbUrl,
+  secret,
   touchAfter: 24 * 60 * 60
 });
 store.on("error", () => {
-  console.log("SESSION STIRE ERROR", e);
+  console.log("SESSION STORE ERROR", e);
 });
 
 const sessionConfig = {
-  secret: process.env.SECRET,
+  secret,
   resave: false,
   saveUninitialized: true,
   cookie: {
