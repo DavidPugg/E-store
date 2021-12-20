@@ -1,0 +1,84 @@
+:root {
+  --color-primary: #2EC4B6;
+  --color-secondary: #20A4F3;
+
+  --border-radius-small: 1rem;
+  --border-radius-medium: 2rem;
+
+  --font-primary: "Lato", sans-serif;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+body {
+  font-family: var(--font-primary);
+  line-height: 1.6;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.2s;
+}
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+
+a {
+  text-decoration: none;
+  color: var(--color-primary);
+}
+
+.btn {
+  background-color: var(--color-primary);
+  border: none;
+  font-size: 1.6rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  border-radius: var(--border-radius-small);
+  transition: all 0.2s ease;
+  padding: 0.7rem 1.5rem;
+}
+.btn:hover {
+  background-color: var(--color-secondary);
+}
+.btn:focus,
+.btn:active,
+.btn.active:focus {
+  background-color: var(--color-secondary);
+  box-shadow: none !important;
+}
+
+input.form-control,
+textarea.form-control,
+.card {
+  font-size: 1.5rem;
+  outline: none;
+  border-radius: var(--border-radius-small);
+  padding: 0.7rem 1.5rem;
+  font-weight: 600;
+  transition: all .2s ease;
+}
+
+input.form-control:focus,
+textarea.form-control:focus {
+  border-color: var(--color-secondary);
+  box-shadow: none;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0;
+}
