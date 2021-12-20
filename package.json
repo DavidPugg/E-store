@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "nodemon server/index.js",
     "build": "nuxt build",
-    "start": "nuxt start",
+    "start": "node server/index.js",
     "generate": "nuxt generate"
   },
   "dependencies": {

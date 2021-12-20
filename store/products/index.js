@@ -4,9 +4,9 @@ import getters from "./getters";
 
 export default {
   namespaced: true,
-  state: {
+  state: () => ({
     cart: [],
-  },
+  }),
   actions,
   mutations,
   getters
