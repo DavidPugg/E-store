@@ -22,6 +22,7 @@ const productRoutes = require("./routes/productRoutes");
 const reviewRoutes = require("./routes/reviewRoutes");
 const orderRoutes = require("./routes/orderRoutes");
 
+//Mongo
 mongoose.connect(dbUrl, {
   useNewUrlParser: true,
   useUnifiedTopology: true
@@ -54,6 +55,8 @@ const sessionConfig = {
   },
   store
 };
+
+//
 
   app.use(express.urlencoded({ extended: true }));
   app.use(express.json());
