@@ -68,4 +68,8 @@ export default {
     name: "fade",
     mode: "out-in"
   },
+
+  serverMiddleware: [
+    '~/server/index.js'
+  ]
 };

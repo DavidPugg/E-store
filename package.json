@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "nodemon server/index.js",
+    "dev": "nuxt",
     "build": "nuxt build",
-    "start": "node server/index.js",
+    "start": "nuxt start",
     "generate": "nuxt generate"
   },
   "dependencies": {

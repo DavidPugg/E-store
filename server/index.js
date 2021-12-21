@@ -1,15 +1,10 @@
-const { loadNuxt, build } = require("nuxt");
+
+const express = require("express");
+const app = express();
 
 require("dotenv").config();
 const dbUrl = process.env.DB_URL || "mongodb://localhost:27017/e-store";
 const secret = process.env.SECRET || "verybadsecret";
-
-const git = "https://git.heroku.com/nuxtestore.git";
-
-const express = require("express");
-const app = express();
-const isDev = process.env.NODE_ENV !== "production";
-const port = process.env.PORT || 3000;
 
 //npm
 const session = require("express-session");
@@ -60,7 +55,6 @@ const sessionConfig = {
   store
 };
 
-async function start() {
   app.use(express.urlencoded({ extended: true }));
   app.use(express.json());
   app.use(session(sessionConfig));
@@ -85,13 +79,4 @@ async function start() {
     res.status(status).json(message);
   });
 
-  //nuxt
-  const nuxt = await loadNuxt(isDev ? "dev" : "start");
-  app.use(nuxt.render);
-  if (isDev) {
-    build(nuxt);
-  }
-  app.listen(port, "0.0.0.0");
-  console.log("Server listening on `localhost:" + port + "`.");
-}
-start();
+  module.exports = app;
