@@ -1,12 +1,12 @@
 <template>
   <nav class="navbar navbar-light navbar-expand-lg border-bottom">
     <div class="container">
-      <div class="col-4">
+      <div class="col-3">
         <NuxtLink class="ms-3 display-4 fw-bold" to="/products"
           >Trgovina</NuxtLink
         >
       </div>
-      <div class="d-flex justify-content-center col-4">
+      <div class="d-flex justify-content-center col-5">
         <form class="d-flex w-100" @submit.prevent="search">
           <input
             class="form-control search"
@@ -30,7 +30,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <div class="collapse navbar-collapse col-4" id="navbarSupportedContent">
+      <div class="collapse navbar-collapse col-3" id="navbarSupportedContent">
         <ul class="navbar-nav mb-2 mb-lg-0 ms-auto">
           <li class="nav-item d-flex justify-content-center">
             <NuxtLink
