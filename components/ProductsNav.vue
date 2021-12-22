@@ -1,25 +1,25 @@
 <template>
-  <div class="p-0 m-0">
-    <div>
-      <nav
-        class="navbar navbar-light p-0 d-flex flex-column align-items-center justify-content-around w-100 border"
+  <div
+    class="p-0 m-0 d-flex flex-lg-column flex-sm-row flex-column justify-content-md-around align-items-md-stretch"
+  >
+    <nav
+      class="navbar navbar-light p-0 d-flex flex-column align-items-center justify-content-around border flex-lg-grow-0 flex-sm-grow-1 me-0 me-sm-3 me-lg-0"
+    >
+      <h5 class="my-3">Category</h5>
+      <NuxtLink
+        v-for="item in categories"
+        :key="item.name"
+        class="nav-item"
+        :class="{ selected: $route.query.category === item.category }"
+        :to="{
+          path: '/products',
+          query: { ...$route.query, category: item.category, page: 1 }
+        }"
+        >{{ item.name }}</NuxtLink
       >
-        <h5 class="my-3">Category</h5>
-        <NuxtLink
-          v-for="item in categories"
-          :key="item.name"
-          class="nav-item"
-          :class="{ selected: $route.query.category === item.category }"
-          :to="{
-            path: '/products',
-            query: { ...$route.query, category: item.category, page: 1 }
-          }"
-          >{{ item.name }}</NuxtLink
-        >
-      </nav>
-    </div>
+    </nav>
 
-    <div class="mt-3">
+    <div class="mt-3 mt-sm-0 mt-lg-3 flex-md-grow-1">
       <nav class="navbar p-0 d-flex flex-column align-items-center border">
         <h5 class="my-3">Filters</h5>
         <div
@@ -95,7 +95,7 @@ export default {
       colors: [undefined, "red", "blue", "black"]
     };
   },
-  
+
   methods: {
     changeQuery() {
       if (this.minPrice == "") {
