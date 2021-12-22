@@ -69,6 +69,7 @@ export default {
     mode: "out-in"
   },
 
+  
   serverMiddleware: [
     '~/server/index.js'
   ]
