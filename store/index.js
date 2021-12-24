@@ -23,7 +23,7 @@ const createStore = () => {
           if (req.session.cart) {
             dispatch("products/setCart", req.session.cart);
           }
-          redirect({ name: "products" });
+          redirect({ name: "products", query: { page: 1 } });
         } catch (err) {
           redirect({
             path: "/error",
