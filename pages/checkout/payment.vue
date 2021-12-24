@@ -1,5 +1,5 @@
 <template>
-  <div class="col-xl-8 offset-xl-2 py-3">
+  <div class="col-xl-8 offset-xl-2 py-3 page">
     <form @submit.prevent="completeOrder">
       <div class="row mt-5">
         <div class="col-3">
@@ -174,17 +174,21 @@ export default {
 </script>
 
 <style scoped>
+.page {
+  font-size: 1.6rem;
+}
+
 .title {
   font-size: 2rem;
   font-weight: 600;
 }
 
 .img {
-  height: 2rem;
-  width: 2rem;
+  height: 3rem;
+  width: auto;
 }
 .paymentSelect {
-  border-radius: 3rem;
+  border-radius: var(--border-radius-small);
   background-color: white;
 }
 .selected {

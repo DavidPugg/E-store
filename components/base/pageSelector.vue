@@ -71,7 +71,7 @@ export default {
 .selected {
   background-color: gainsboro;
   font-weight: 600;
-  color: var(--color-primary) !important;
+  color: var(--color-secondary) !important;
 }
 
 .page-link {

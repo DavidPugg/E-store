@@ -1,11 +1,9 @@
 <template>
   <nav class="navbar navbar-light navbar-expand-lg border-bottom">
     <div class="container">
-      <div class="col-3">
-        <NuxtLink class="ms-3 display-4 fw-bold" to="/products"
-          >Trgovina</NuxtLink
-        >
-      </div>
+      <NuxtLink class="title col-3 ms-3 display-4 fw-bold" to="/products"
+        >Trgovina</NuxtLink
+      >
       <div class="d-flex justify-content-center col-5">
         <form class="d-flex w-100" @submit.prevent="search">
           <input
@@ -32,7 +30,7 @@
 
       <div class="collapse navbar-collapse col-3" id="navbarSupportedContent">
         <ul class="navbar-nav mb-2 mb-lg-0 ms-auto">
-          <li class="nav-item d-flex justify-content-center">
+          <li class="nav-item d-flex justify-content-center py-1">
             <NuxtLink
               class="nav-link pb-1 cart-link"
               aria-current="page"
@@ -43,11 +41,16 @@
                 alt="Cart"
               />
               <transition name="cart" mode="out-in">
-                <div v-if="cartCount > 0" :key="cartCount" class="cart-items">{{ cartCount }}</div>
+                <div v-if="cartCount > 0" :key="cartCount" class="cart-items">
+                  {{ cartCount }}
+                </div>
               </transition>
             </NuxtLink>
           </li>
-          <li class="nav-item d-flex justify-content-center" v-if="!isAuth">
+          <li
+            class="nav-item d-flex justify-content-center py-1"
+            v-if="!isAuth"
+          >
             <NuxtLink
               class="nav-link pb-1 ms-3"
               aria-current="page"
@@ -56,7 +59,10 @@
               >Login</NuxtLink
             >
           </li>
-          <li class="nav-item d-flex justify-content-center" v-if="!isAuth">
+          <li
+            class="nav-item d-flex justify-content-center py-1"
+            v-if="!isAuth"
+          >
             <NuxtLink
               class="nav-link pb-1 mx-3"
               aria-current="page"
@@ -65,7 +71,7 @@
               >Register</NuxtLink
             >
           </li>
-          <li class="nav-item d-flex justify-content-center" v-if="isAuth">
+          <li class="nav-item d-flex justify-content-center py-1" v-if="isAuth">
             <NuxtLink
               class="nav-link pb-1 mx-3"
               aria-current="page"
@@ -74,8 +80,12 @@
               >Account</NuxtLink
             >
           </li>
-          <li class="nav-item d-flex justify-content-center" v-if="isAuth">
-            <div class="nav-link pb-1 mx-3 logout" aria-current="page" @click="logout">
+          <li class="nav-item d-flex justify-content-center py-1" v-if="isAuth">
+            <div
+              class="nav-link pb-1 mx-3 logout"
+              aria-current="page"
+              @click="logout"
+            >
               Logout
             </div>
           </li>
@@ -120,40 +130,39 @@ export default {
 
 <style scoped>
 .navbar-light .nav-item {
-
   font-weight: 600 !important;
 }
 
+.title {
+  transition: all 0.2s ease;
+}
+
 .nav-link {
+  backface-visibility: hidden;
+  color: var(--color-primary) !important;
   font-size: 1.6rem;
-  transition: all 0.1s ease;
+  transition: all 0.2s ease;
+}
+
+.image {
+  filter: invert(22%) sepia(5%) saturate(13%) hue-rotate(325deg) brightness(90%)
+    contrast(87%);
+  transition: all 0.2s ease;
 }
 
 .nav-link:hover,
 .navbar-brand:hover {
-  color: var(--color-secondary);
+  color: var(--color-secondary) !important;
   transform: translateY(-1px);
 }
 
-.navbar {
-  background-color: #fff;
-}
-
 .active {
-  color: var(--color-secondary);
+  color: var(--color-secondary) !important;
   border-bottom: 1px solid var(--color-secondary);
 }
 .image {
   height: 30px;
   width: auto;
-}
-
-.logout {
-  cursor: pointer;
-}
-
-.custom-toggler {
-  border: none;
 }
 
 .cart-link {
@@ -178,11 +187,13 @@ export default {
   align-items: center;
 }
 
-.cart-enter-active, .cart-leave-active {
-  transition: all .2s ease;
+.cart-enter-active,
+.cart-leave-active {
+  transition: all 0.2s ease;
 }
 
-.cart-enter, .cart-leave-to {
+.cart-enter,
+.cart-leave-to {
   transform: translateY(-2px);
 }
 </style>

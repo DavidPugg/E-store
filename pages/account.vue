@@ -1,9 +1,7 @@
 <template>
-  <div class="page">
+  <div>
     <div class="row col-md-8 offset-md-2">
-      <div
-        class="d-flex justify-content-center text-center border-top border-bottom lines"
-      >
+      <div class="d-flex justify-content-center text-center border-bottom">
         <div class="col-4 py-2" id="cart">
           <NuxtLink class="link" to="/account/">Account Settings</NuxtLink>
         </div>
@@ -27,20 +25,14 @@ export default {
 </script>
 
 <style scoped>
-.page {
-  font-size: 1.6rem;
-}
-
 .link {
   text-decoration: none;
   color: grey;
+  font-size: 1.8rem;
+  color: var(--color-primary);
 }
 a.nuxt-link-exact-active {
-  color: var(--color-primary);
+  color: var(--color-secondary);
   font-weight: 600;
-}
-
-.lines {
-  border-radius: 2rem;
 }
 </style>

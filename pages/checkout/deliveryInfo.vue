@@ -1,49 +1,49 @@
 <template>
-  <div>
+  <div class="page">
     <div v-if="showModal">
-        <div class="modal-mask">
-          <div class="modal-wrapper">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title">Login</h5>
-                </div>
-                <div class="modal-body mx-5">
-                  <form @submit.prevent="login">
-                    <div>
-                      <label for="username">Username</label>
-                      <input
-                        type="text"
-                        class="form-control"
-                        v-model="username"
-                      />
-                    </div>
-                    <div class="my-3">
-                      <label for="username">Password</label>
-                      <input
-                        type="password"
-                        class="form-control"
-                        v-model="password"
-                      />
-                    </div>
-                  </form>
-                </div>
-                <div class="modal-footer">
-                  <button
-                    type="button"
-                    class="btn btn-secondary me-auto"
-                    @click="showModal = false"
-                  >
-                    Continue without logging in
-                  </button>
-                  <button type="button" class="btn btn-primary" @click="login">
-                    Login
-                  </button>
-                </div>
+      <div class="modal-mask">
+        <div class="modal-wrapper">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Login</h5>
+              </div>
+              <div class="modal-body mx-5">
+                <form @submit.prevent="login">
+                  <div>
+                    <label for="username">Username</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      v-model="username"
+                    />
+                  </div>
+                  <div class="my-3">
+                    <label for="username">Password</label>
+                    <input
+                      type="password"
+                      class="form-control"
+                      v-model="password"
+                    />
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary me-auto"
+                  @click="showModal = false"
+                >
+                  Continue without logging in
+                </button>
+                <button type="button" class="btn btn-primary" @click="login">
+                  Login
+                </button>
               </div>
             </div>
           </div>
         </div>
+      </div>
     </div>
 
     <div class="col-xl-8 offset-xl-2 py-3">
@@ -129,13 +129,15 @@
         </div>
         <div class="row">
           <div class="d-flex justify-content-start col-6">
-            <NuxtLink class="btn btn-danger btn-lg mt-3" to="/checkout">Cart</NuxtLink>
+            <NuxtLink class="btn btn-danger btn-lg mt-3" to="/checkout"
+              >Cart</NuxtLink
+            >
           </div>
           <div class="d-flex justify-content-end col-6">
-          <button class="btn btn-success btn-lg mt-3">
-            Payment
-          </button>
-        </div>
+            <button class="btn btn-success btn-lg mt-3">
+              Payment
+            </button>
+          </div>
         </div>
       </form>
     </div>
@@ -185,8 +187,8 @@ export default {
     completeOrder() {
       const validForm = this.validateInfo();
       if (validForm) {
-        this.$emit('mailingInfo', this.user)
-        this.$router.push('/checkout/payment')
+        this.$emit("mailingInfo", this.user);
+        this.$router.push("/checkout/payment");
       } else {
         this.$store.dispatch("setErrorMessage", "Please input all the info.", {
           root: true
@@ -198,13 +200,13 @@ export default {
         username: this.username,
         password: this.password
       });
-      this.user = this.$store.getters['auth/getUser'].info
+      this.user = this.$store.getters["auth/getUser"].info;
       this.showModal = false;
     }
   },
   asyncData({ store }) {
-    if (store.getters['auth/isAuth']) {
-      const user = store.getters['auth/getUser'].info;
+    if (store.getters["auth/isAuth"]) {
+      const user = store.getters["auth/getUser"].info;
       return { user };
     } else {
       const user = {
@@ -223,6 +225,10 @@ export default {
 </script>
 
 <style scoped>
+.page {
+  font-size: 1.6rem;
+}
+
 a {
   text-decoration: none;
   color: white;
@@ -246,5 +252,4 @@ a {
 .invalidInfo {
   border-color: red;
 }
-
 </style>
