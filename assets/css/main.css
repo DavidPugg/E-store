@@ -1,6 +1,6 @@
 :root {
-  --color-primary: #2EC4B6;
-  --color-secondary: #20A4F3;
+  --color-primary: #2ec4b6;
+  --color-secondary: #20a4f3;
 
   --border-radius-small: 1rem;
   --border-radius-medium: 2rem;
@@ -17,6 +17,12 @@
 html {
   box-sizing: border-box;
   font-size: 62.5%;
+}
+
+@media only screen and (max-width: 600px) {
+  html {
+    font-size: 50%;
+  }
 }
 
 body {
@@ -66,7 +72,7 @@ textarea.form-control,
   border-radius: var(--border-radius-small);
   padding: 0.7rem 1.5rem;
   font-weight: 600;
-  transition: all .2s ease;
+  transition: all 0.2s ease;
 }
 
 input.form-control:focus,
