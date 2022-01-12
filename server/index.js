@@ -1,4 +1,3 @@
-
 const express = require("express");
 const app = express();
 
@@ -56,31 +55,30 @@ const sessionConfig = {
   store
 };
 
-
 //
 
-  app.use(express.urlencoded({ extended: true }));
-  app.use(express.json());
-  app.use(session(sessionConfig));
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(session(sessionConfig));
 
-  //passport stuff
-  app.use(passport.initialize());
-  app.use(passport.session());
-  passport.use(new LocalStrategy(User.authenticate()));
-  passport.serializeUser(User.serializeUser());
-  passport.deserializeUser(User.deserializeUser());
+//passport stuff
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
-  //routes
-  app.use("/api", userRoutes);
-  app.use("/api/products", productRoutes);
-  app.use("/api/products/:id/reviews", reviewRoutes);
-  app.use("/api/orders", orderRoutes);
+//routes
+app.use("/api", userRoutes);
+app.use("/api/products", productRoutes);
+app.use("/api/products/:id/reviews", reviewRoutes);
+app.use("/api/orders", orderRoutes);
 
-  //error handler
-  app.use((err, req, res, next) => {
-    const status = err.status || 500;
-    const message = err.message || "Internal server error!";
-    res.status(status).json(message);
-  });
+//error handler
+app.use((err, req, res, next) => {
+  const status = err.status || 500;
+  const message = err.message || "Internal server error!";
+  res.status(status).json(message);
+});
 
-  module.exports = app;
+module.exports = app;

@@ -83,7 +83,7 @@ export default {
 .price {
   font-size: 1.8rem;
   font-weight: 600;
-  color: rgb(22, 202, 22);
+  color: var(--color-secondary);
 }
 
 .btn {

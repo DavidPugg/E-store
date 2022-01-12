@@ -126,7 +126,7 @@ export default {
 
 .price {
   font-weight: 600;
-  color: rgb(22, 202, 22);
+  color: var(--color-secondary);
   margin-bottom: 1rem;
 }
 
